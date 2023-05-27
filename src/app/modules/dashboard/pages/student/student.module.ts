@@ -8,6 +8,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { CalendarioComponent } from './components/calendario/calendario.component';
 import { AsistenciaComponent } from './components/asistencia/asistencia.component';
 import { LiquidarestudianteComponent } from './components/liquidarestudiante/liquidarestudiante.component';
+import { CreareventoComponent } from './components/crearevento/crearevento.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { LiquidarestudianteComponent } from './components/liquidarestudiante/liq
     RegisterComponent,
     CalendarioComponent,
     AsistenciaComponent,
-    LiquidarestudianteComponent
+    LiquidarestudianteComponent,
+    CreareventoComponent
   ],
   imports: [
     CommonModule,

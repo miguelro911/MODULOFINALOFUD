@@ -1,0 +1,38 @@
+<form [formGroup]="formRegistrarEvento" (ngSubmit)="CrearEvento()" class="formulario">
+    <mat-card>
+        <mat-form-field class="field">
+            <mat-label>Codigo</mat-label>
+            <input autocomplete="off" formControlName="codigo" matInput>
+        </mat-form-field>
+
+        <mat-form-field class="field">
+            <mat-label>Insrumento</mat-label>
+            <input autocomplete="off" formControlName="instrumento" matInput>
+        </mat-form-field>
+
+        <mat-form-field class="field">
+            <mat-label>Fecha y hora de inicio</mat-label>
+            <input autocomplete="off" formControlName="FechaInicio" matInput type="datetime">
+        </mat-form-field>
+        <mat-form-field class="field">
+            <mat-label>Fecha y hora final</mat-label>
+            <input autocomplete="off" formControlName="FechaFinal" matInput type="datetime">
+        </mat-form-field>
+        <mat-form-field class="field">
+            <mat-label>Obra</mat-label>
+            <input autocomplete="off" formControlName="Obra" matInput>
+        </mat-form-field>
+        <mat-form-field class="field">
+            <mat-label>Consecutivo</mat-label>
+            <input autocomplete="off" formControlName="consecutivo" matInput>
+        </mat-form-field>
+        <mat-form-field class="field">
+            <mat-label>Calificacion</mat-label>
+            <input autocomplete="off" formControlName="Calificacion" matInput>
+        </mat-form-field>
+    </mat-card>
+
+    <div>
+        <button type="submit" class="btn btn-primary button"> Submit</button>
+    </div>
+</form>

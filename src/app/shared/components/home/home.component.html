@@ -1,1 +1,14 @@
-<p>home works!</p>
+<h2>Funcionario Ingrese su email</h2>
+
+<form [formGroup]="formRegistrarCoordinador" (ngSubmit)="LoginCoordinador()" class="formulario">
+    <mat-card>
+        <mat-form-field class="field">
+            <mat-label>Correo del Coordinador</mat-label>
+            <input autocomplete="off" formControlName="correo" matInput>
+        </mat-form-field>
+    </mat-card>
+
+    <div>
+        <button type="submit" class="btn btn-primary button"> Submit</button>
+    </div>
+</form>

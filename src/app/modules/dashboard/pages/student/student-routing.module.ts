@@ -5,6 +5,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { CalendarioComponent } from './components/calendario/calendario.component';
 import { AsistenciaComponent } from './components/asistencia/asistencia.component';
 import { LiquidarestudianteComponent } from './components/liquidarestudiante/liquidarestudiante.component';
+import { CreareventoComponent } from './components/crearevento/crearevento.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,9 @@ const routes: Routes = [
   },
   {
     path: 'liquidarestudiante' , component:LiquidarestudianteComponent
+  },
+  {
+    path: 'crearevento' , component:CreareventoComponent
   }
 
 ];
