@@ -15,16 +15,7 @@ export class StudentService {
     private http: HttpClient
   ) { }
 
-  getAll() {
-    return this.http.get<Student>(`${this.api_url}${StudentRoutes.BASE}${StudentRoutes.GET_ALL}`);
+  getBestStudentsByInstrument(body: Object) {
+    return this.http.post(`${this.api_url}${StudentRoutes.BASE}${StudentRoutes.GET_BEST_BY_INSTRUMENT}`, body);
   }
-
-  register(student: Student) {
-    return this.http.post(`${this.api_url}${StudentRoutes.BASE}${StudentRoutes.REGISTER}`, student);
-  }
-
-  getBestStudentsByInstrument(period: Number) {
-    return this.http.post(`${this.api_url}${StudentRoutes.BASE}${StudentRoutes.GET_BEST_BY_INSTRUMENT}`, period);
-  }
-  
 }

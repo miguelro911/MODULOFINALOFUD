@@ -15,12 +15,12 @@ export class CalendarioServiceService {
     private http: HttpClient
   ) { }
 
-  getPlanificationCalendarByPeriod(period: Number) {
-    return this.http.post(`${this.api_url}${CalendarRoutes.BASE}${CalendarRoutes.GET_PLANIFICATION_CALENDAR_BY_PERIOD}`, period);
+  getPlanificationCalendarByPeriod(body: Object) {
+    return this.http.post(`${this.api_url}${CalendarRoutes.BASE}${CalendarRoutes.GET_PLANIFICATION_CALENDAR_BY_PERIOD}`, body);
   }
 
-  finishPlanificationCalendarByPeriod(period: Number) {
-    return this.http.post(`${this.api_url}${CalendarRoutes.BASE}${CalendarRoutes.FINISH_PLANIFICATION_CALENDAR}`, period);
+  finishPlanificationCalendarByPeriod(body: Object) {
+    return this.http.post(`${this.api_url}${CalendarRoutes.BASE}${CalendarRoutes.FINISH_PLANIFICATION_CALENDAR}`, body);
   }
 
 }

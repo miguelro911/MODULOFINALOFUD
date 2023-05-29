@@ -9,10 +9,6 @@ const routes: Routes = [
     component: LayoutComponent,
     children: [
       {
-        path: 'admin',
-        loadChildren: () => import('./pages/admin/admin.module').then(m => m.AdminModule)
-      },
-      {
         path: 'student',
         loadChildren: () => import('./pages/student/student.module').then(m => m.StudentModule)
       },

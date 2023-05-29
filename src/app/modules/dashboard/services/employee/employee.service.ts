@@ -15,12 +15,12 @@ export class EmpleadoServiceService {
     private http: HttpClient
   ) { }
 
-  login(email: String) {
-    return this.http.post(`${this.api_url}${EmployeeRoutes.BASE}${EmployeeRoutes.LOGIN}`, email);
+  login(body: Object) {
+    return this.http.post(`${this.api_url}${EmployeeRoutes.BASE}${EmployeeRoutes.LOGIN}`, body);
   }
 
-  register(employee: Employee) {
-    return this.http.post(`${this.api_url}${EmployeeRoutes.BASE}${EmployeeRoutes.REGISTER}`, employee);
+  register(body: Object) {
+    return this.http.post(`${this.api_url}${EmployeeRoutes.BASE}${EmployeeRoutes.REGISTER}`, body);
   }
 
 }
