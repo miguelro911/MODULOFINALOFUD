@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormsModule } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 
 @Component({
@@ -9,23 +10,27 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './asistencia.component.html',
   styleUrls: ['./asistencia.component.css']
 })
-export class AsistenciaComponent {
+export class AsistenciaComponent implements OnInit {
+  asistenciaForm!: FormGroup;
+  participantes = [
+    { nombre: 'Participante 1' },
+    { nombre: 'Participante 2' },
+    { nombre: 'Participante 3' }
+    // Agrega más participantes si es necesario
+  ];
   nombre: string = "";
-  constructor(private http: HttpClient, private snackBar: MatSnackBar ){}
+  displayedColumns: string[] = ['nombre', 'asistencia'];
+  constructor(private http: HttpClient, private snackBar: MatSnackBar, private formBuilder: FormBuilder ){}
 
   registrarAsistencia(){
-    const asistenciaData = {
-      nombre: this.nombre
-    };
-    this.http.post('https://ejemplo.com/api/asistencia', asistenciaData)
-    .subscribe(
-      response => {
-        this.snackBar.open('Asistencia registrada exitosamente', 'Cerrar', { duration: 3000 });
-      },
-      error => {
-        this.snackBar.open('Error al registrar la asistencia', 'Cerrar', { duration: 3000 });
-      }
-    );
+    console.log(this.asistenciaForm.value)
+}
+
+ngOnInit(): void {
+  this.asistenciaForm = this.formBuilder.group({});
+    this.participantes.forEach((participante, index) => {
+      this.asistenciaForm.addControl(index.toString(), this.formBuilder.control(''));
+    });
 }
 
   }
