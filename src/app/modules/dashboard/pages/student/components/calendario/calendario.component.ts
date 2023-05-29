@@ -64,7 +64,6 @@ export class CalendarioComponent {
 
   finishPlanificationCalendar(): void {
     this.spinner = true;
-    console.log(PeriodoSelecComponent.selectedPeriod);
     let bodyRequest: object = {
       period: PeriodoSelecComponent.selectedPeriod,
     };

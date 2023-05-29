@@ -1,9 +1,9 @@
 export interface Student {
-  codestudiante: String,
-  codunidad: String,
-  nombre: String,
-  apellido: String,
-  fechainscripcion: String,
-  fechanacimiento: String,
-  correo: String
+  codestudiante: string,
+  codunidad: string,
+  nombre: string,
+  apellido: string,
+  fechainscripcion: string,
+  fechanacimiento: string,
+  correo: string
 }
