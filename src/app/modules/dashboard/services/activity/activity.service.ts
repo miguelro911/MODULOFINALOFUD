@@ -15,8 +15,8 @@ export class ActivityService {
     private http: HttpClient
   ) { }
 
-  getByPeriod(period: Number) {
-    return this.http.post(`${this.api_url}${ActivityRoutes.BASE}${ActivityRoutes.GET_BY_PERIOD}`, period);
+  getByPeriod(body: Object) {
+    return this.http.post(`${this.api_url}${ActivityRoutes.BASE}${ActivityRoutes.GET_BY_PERIOD}`, body);
   }
 
 }

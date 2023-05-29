@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { CalendarioServiceService } from './calendario.service';
+import { CalendarioServiceService } from './calendar.service';
 
 describe('CalendarioServiceService', () => {
   let service: CalendarioServiceService;

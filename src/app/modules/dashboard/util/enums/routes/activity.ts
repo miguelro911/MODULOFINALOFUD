@@ -1,4 +1,4 @@
 export enum ActivityRoutes {
   BASE = '/activity',
-  GET_BY_PERIOD = '/get-by-period'
+  GET_BY_PERIOD = '/getByPeriod'
 }

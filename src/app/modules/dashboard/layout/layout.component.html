@@ -5,15 +5,10 @@
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="student/list-all" routerLinkActive="active" >Seleccion</a>
-      <a mat-list-item routerLink="student/register" routerLinkActive="active">Registrar estudiantes</a>
-      <a mat-list-item routerLink="student/calendario" routerLinkActive="active">Calendario</a>
+      <a mat-list-item routerLink= "student/calendario" routerLinkActive="active">Calendario</a>
       <a mat-list-item routerLink = "student/asistencia">Asistencia</a>
       <a mat-list-item routerLink = "student/liquidarestudiante">Liquidar estudiante</a>
       <a mat-list-item routerLink = "student/crearevento">Registrar Evento</a>
-
-
-      
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

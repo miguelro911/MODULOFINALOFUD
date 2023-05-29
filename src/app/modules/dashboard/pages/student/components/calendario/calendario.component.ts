@@ -42,10 +42,13 @@ export class CalendarioComponent implements OnInit{
 
   getActivitiesByPeriod(): void {
     this.spinner = true;
-    this.activityService.getByPeriod(202301).subscribe(
+    let bodyRequest: object = {
+      period: 202301
+    };
+    this.activityService.getByPeriod(bodyRequest).subscribe(
       {
         next: (resp: any) => {
-          this.activitiesRetrieved = resp.data.studentEntityList;
+          this.activitiesRetrieved = resp.data.activities;
           this.spinner = false;
           this.utilService.showToast("Actividades por periodo consultados exitosamente");
           console.log(this.activitiesRetrieved);
