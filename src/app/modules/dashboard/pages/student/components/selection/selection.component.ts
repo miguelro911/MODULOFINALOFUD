@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { StudentService } from 'src/app/modules/dashboard/services/student/student.service';
 import { UtilService } from 'src/app/modules/dashboard/services/util/util.service';
-import { PeriodoSelecComponent } from '../../periodo-selec/periodo-selec.component';
+import { PeriodoSelecComponent } from '../periodo-selec/periodo-selec.component';
 import { StudentInstrumentProjection } from 'src/app/modules/dashboard/util/interfaces/studentInstrumentProjection';
 
 const COLUMNS = [
