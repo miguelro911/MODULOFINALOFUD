@@ -2,10 +2,10 @@ import { Component , OnInit } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Calendar } from '@fullcalendar/core';
+import { ActivityService } from 'src/app/modules/dashboard/services/activity/activity.service';
+import { UtilService } from 'src/app/modules/dashboard/services/util/util.service';
+import { Activity } from 'src/app/modules/dashboard/util/interfaces/activity';
 import dayGridPlugin from '@fullcalendar/daygrid';
-
-
-
 
 @Component({
   selector: 'app-calendario',
@@ -13,6 +13,16 @@ import dayGridPlugin from '@fullcalendar/daygrid';
   styleUrls: ['./calendario.component.css']
 })
 export class CalendarioComponent implements OnInit{
+
+  spinner: boolean = false;
+  activitiesRetrieved: Array<Activity> = [];
+
+  constructor(
+    private activityService: ActivityService,
+    private utilService: UtilService
+  ) {
+    this.getActivitiesByPeriod();
+  }
 
   ngOnInit(): void {
     const calendarEl = document.getElementById('calendar')!;
@@ -28,6 +38,29 @@ export class CalendarioComponent implements OnInit{
 
     calendar.render();
     
+  }
+
+  getActivitiesByPeriod(): void {
+    this.spinner = true;
+    this.activityService.getByPeriod(202301).subscribe(
+      {
+        next: (resp: any) => {
+          this.activitiesRetrieved = resp.data.studentEntityList;
+          this.spinner = false;
+          this.utilService.showToast("Actividades por periodo consultados exitosamente");
+          console.log(this.activitiesRetrieved);
+        },
+        error: (error: any) => {
+          if(error.status == 404) {
+            this.utilService.showToast(error.error.message);
+          } else {
+            this.utilService.showToast("Error consultando actividades por periodo");
+            console.error(error);
+          }
+          this.spinner = false;
+        }
+      }
+    );
   }
 
 }
