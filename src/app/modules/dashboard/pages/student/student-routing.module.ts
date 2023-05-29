@@ -5,7 +5,7 @@ import { AsistenciaComponent } from './components/asistencia/asistencia.componen
 import { LiquidarestudianteComponent } from './components/liquidarestudiante/liquidarestudiante.component';
 import { CreareventoComponent } from './components/crearevento/crearevento.component';
 import { HomeComponent } from 'src/app/shared/components/home/home.component';
-import { SelectionComponent } from './components/selection/selection/selection.component';
+import { SelectionComponent } from './components/selection/selection.component';
 
 const routes: Routes = [
   {
