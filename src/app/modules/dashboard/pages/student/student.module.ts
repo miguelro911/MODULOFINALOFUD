@@ -7,13 +7,15 @@ import { CalendarioComponent } from './components/calendario/calendario.componen
 import { AsistenciaComponent } from './components/asistencia/asistencia.component';
 import { LiquidarestudianteComponent } from './components/liquidarestudiante/liquidarestudiante.component';
 import { CreareventoComponent } from './components/crearevento/crearevento.component';
+import { PeriodoSelecComponent } from './components/periodo-selec/periodo-selec.component';
 
 @NgModule({
   declarations: [
     CalendarioComponent,
     AsistenciaComponent,
     LiquidarestudianteComponent,
-    CreareventoComponent
+    CreareventoComponent,
+    PeriodoSelecComponent
   ],
   imports: [
     CommonModule,

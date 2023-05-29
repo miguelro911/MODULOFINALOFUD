@@ -1,0 +1,13 @@
+<div class="container">
+  <app-spinner *ngIf="spinner"></app-spinner>
+  <div class="content">
+    <h2>Seleccione el periodo a consultar</h2>
+    <mat-form-field appearance="fill" style="margin-bottom: 1rem;">
+      <mat-select [(value)]="staticSelectedPeriod" (selectionChange)="changeHandler(staticSelectedPeriod)">
+          <mat-option *ngFor="let period of periodsRetrieved" [value]="period.idperiodo">
+              {{period.idperiodo}}
+          </mat-option>
+      </mat-select>
+  </mat-form-field>
+  </div>
+</div>

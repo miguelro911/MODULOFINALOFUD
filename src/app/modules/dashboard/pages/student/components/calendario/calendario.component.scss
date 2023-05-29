@@ -1,0 +1,22 @@
+.container {
+  padding: 1rem;
+  height: 100%;
+  width: 100%;
+  mat-card {
+    width: 100%;
+    mat-card-header * {
+      font-size: 1.7rem;
+    }
+    mat-card-content {
+      width: 100%;
+      #calendar {
+        width: 100%;
+      }
+    }
+    mat-card-actions {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+    }
+  }
+}

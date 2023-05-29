@@ -18,6 +18,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 const materialModule = [
   MatFormFieldModule,
@@ -36,7 +37,8 @@ const materialModule = [
   MatDatepickerModule,
   MatNativeDateModule,
   MatSlideToggleModule,
-  MatSidenavModule
+  MatSidenavModule,
+  FullCalendarModule
 ]
 
 @NgModule({

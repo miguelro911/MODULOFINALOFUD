@@ -1,69 +1,87 @@
-import { Component , OnInit } from '@angular/core';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Calendar } from '@fullcalendar/core';
-import { ActivityService } from 'src/app/modules/dashboard/services/activity/activity.service';
+import { Component } from '@angular/core';
+import { Calendar as CalendarType } from 'src/app/modules/dashboard/util/interfaces/calendar';
 import { UtilService } from 'src/app/modules/dashboard/services/util/util.service';
-import { Activity } from 'src/app/modules/dashboard/util/interfaces/activity';
 import dayGridPlugin from '@fullcalendar/daygrid';
+import { CalendarService } from 'src/app/modules/dashboard/services/calendar/calendar.service';
+import { CalendarOptions } from '@fullcalendar/core';
+import { PeriodoSelecComponent } from '../periodo-selec/periodo-selec.component';
 
 @Component({
   selector: 'app-calendario',
   templateUrl: './calendario.component.html',
-  styleUrls: ['./calendario.component.css']
+  styleUrls: ['./calendario.component.scss'],
 })
-export class CalendarioComponent implements OnInit{
-
+export class CalendarioComponent {
   spinner: boolean = false;
-  activitiesRetrieved: Array<Activity> = [];
+  activitiesRetrieved: Array<CalendarType> = [];
+  displayDates: Array<Object> = [];
+  calendarOptions: CalendarOptions = {
+    initialView: 'dayGridMonth',
+    plugins: [dayGridPlugin]
+  };
 
   constructor(
-    private activityService: ActivityService,
+    private calendarService: CalendarService,
     private utilService: UtilService
-  ) {
-    this.getActivitiesByPeriod();
-  }
+  ) {}
 
-  ngOnInit(): void {
-    const calendarEl = document.getElementById('calendar')!;
-
-    const calendar = new Calendar(calendarEl, {
-      plugins: [dayGridPlugin],
-      events: [
-        // Aquí puedes agregar tus eventos
-        { title: 'Grupo firme', date: '2023-08-03' },
-        { title: 'Grupo firme', date: '2023-08-05' },
-      ]
-    });
-
-    calendar.render();
-    
-  }
-
-  getActivitiesByPeriod(): void {
+  getActivitiesByPeriod(period: number): void {
     this.spinner = true;
     let bodyRequest: object = {
-      period: 202301
+      period: period,
     };
-    this.activityService.getByPeriod(bodyRequest).subscribe(
-      {
-        next: (resp: any) => {
-          this.activitiesRetrieved = resp.data.activities;
-          this.spinner = false;
-          this.utilService.showToast("Actividades por periodo consultados exitosamente");
-          console.log(this.activitiesRetrieved);
-        },
-        error: (error: any) => {
-          if(error.status == 404) {
-            this.utilService.showToast(error.error.message);
-          } else {
-            this.utilService.showToast("Error consultando actividades por periodo");
-            console.error(error);
+    this.calendarService.getAllByPeriod(bodyRequest).subscribe({
+      next: (resp: any) => {
+        this.activitiesRetrieved = resp.data.calendars;
+        this.spinner = false;
+        this.utilService.showToast(
+          'Actividades por periodo consultados exitosamente'
+        );
+        this.displayDates = this.activitiesRetrieved.map(
+          (activity: CalendarType) => {
+            return {
+              title: this.utilService.getCalendarType(activity.idtipocalen),
+              start: new Date(activity.fechainicio),
+              end: new Date(activity.fechafin),
+              allDay: false,
+            };
           }
-          this.spinner = false;
+        );
+      },
+      error: (error: any) => {
+        if (error.status == 404) {
+          this.utilService.showToast(error.error.message);
+        } else {
+          this.utilService.showToast(
+            'Error consultando actividades por periodo'
+          );
+          console.error(error);
         }
-      }
-    );
+        this.spinner = false;
+      },
+    });
   }
 
+  finishPlanificationCalendar(): void {
+    this.spinner = true;
+    console.log(PeriodoSelecComponent.selectedPeriod);
+    let bodyRequest: object = {
+      period: PeriodoSelecComponent.selectedPeriod,
+    };
+    this.calendarService.finishPlanificationCalendarByPeriod(bodyRequest).subscribe({
+      next: (resp: any) => {
+        this.spinner = false;
+        this.utilService.showToast('Calendario de planeación terminado exitosamente');
+      },
+      error: (error: any) => {
+        if (error.status == 404) {
+          this.utilService.showToast(error.error.message);
+        } else {
+          this.utilService.showToast('Error terminando calendario de planeación');
+          console.error(error);
+        }
+        this.spinner = false;
+      },
+    });
+  }
 }

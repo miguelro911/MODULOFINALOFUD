@@ -4,8 +4,12 @@ import { CalendarioComponent } from './components/calendario/calendario.componen
 import { AsistenciaComponent } from './components/asistencia/asistencia.component';
 import { LiquidarestudianteComponent } from './components/liquidarestudiante/liquidarestudiante.component';
 import { CreareventoComponent } from './components/crearevento/crearevento.component';
+import { HomeComponent } from 'src/app/shared/components/home/home.component';
 
 const routes: Routes = [
+  {
+    path: 'home', component: HomeComponent
+  },
   {
     path: 'calendario', component: CalendarioComponent
   },

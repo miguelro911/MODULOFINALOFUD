@@ -1,19 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environment/environment';
-import { Calendar } from '../../util/interfaces/calendar';
 import { CalendarRoutes } from '../../util/enums/routes/calendar';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CalendarioServiceService {
+export class CalendarService {
 
   api_url: String = environment.api_url;
 
   constructor(
     private http: HttpClient
   ) { }
+
+  getAllByPeriod(body: Object) {
+    return this.http.post(`${this.api_url}${CalendarRoutes.BASE}${CalendarRoutes.GET_ALL_BY_PERIOD}`, body);
+  }
 
   getPlanificationCalendarByPeriod(body: Object) {
     return this.http.post(`${this.api_url}${CalendarRoutes.BASE}${CalendarRoutes.GET_PLANIFICATION_CALENDAR_BY_PERIOD}`, body);

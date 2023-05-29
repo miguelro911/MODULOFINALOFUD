@@ -1,21 +1,20 @@
 import { Injectable } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { CalendarTypes } from '../../util/enums/calendarTypes';
+import { Calendar } from '../../util/interfaces/calendar';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UtilService {
+  constructor(private snackBar: MatSnackBar) {}
 
-  constructor(
-    private snackBar: MatSnackBar
-  ) { }
-
-  showToast(msg: string, btnMsg = "Ok") {
+  showToast(msg: string, btnMsg = 'Ok') {
     this.snackBar.open(msg, btnMsg, {
-      verticalPosition: "bottom",
-      horizontalPosition: "right",
-      duration: 5000
+      verticalPosition: 'top',
+      horizontalPosition: 'right',
+      duration: 5000,
     });
   }
 
@@ -34,6 +33,23 @@ export class UtilService {
       return `Mínimo ${formControl.errors?.minlength.requiredLength} caracteres`;
     }
     return '';
+  }
+
+  getCalendarType(calendarType: string): string {
+    for (let item in CalendarTypes) {
+      if (isNaN(Number(item))) {
+        if (CalendarTypes[item] == calendarType) {
+          return item;
+        }
+      }
+    }
+    return 'Null';
+  }
+
+  getCalendarsByType(calendars: Array<Calendar>, type: string) {
+    return calendars.filter((calendar) => {
+      return calendar.idtipocalen == type;
+    });
   }
 
 }

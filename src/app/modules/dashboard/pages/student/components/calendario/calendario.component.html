@@ -1,5 +1,25 @@
-<h2>Calendario de actividades</h2>
-<div id="calendar"></div>
-
-
-
+<div class="container">
+  <app-periodo-selec (event)="getActivitiesByPeriod($event)"></app-periodo-selec>
+  <mat-card *ngIf="displayDates && displayDates.length != 0">
+    <app-spinner *ngIf="spinner"></app-spinner>
+    <mat-card-header>
+      <mat-card-title>Calendario de actividades</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <full-calendar [options]="calendarOptions" [events]="displayDates"></full-calendar>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button disabled mat-fab extended color="primary">
+        <mat-icon>add</mat-icon>
+        Crear calendario
+      </button>
+      <button mat-fab extended color="primary" [disabled]="spinner" (click)="finishPlanificationCalendar()">
+        <mat-icon>add</mat-icon>
+        Terminar calendario
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  <div *ngIf="displayDates.length == 0" style="text-align: center;">
+    <h3>No se encontraron fechas para el periodo elegido</h3>
+  </div>
+</div>
