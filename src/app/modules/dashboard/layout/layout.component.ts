@@ -80,4 +80,22 @@ export class LayoutComponent {
     return currentActivities.length != 0;
   }
 
+  liquidationRenderCondition(): boolean {
+    let noDateMatch = true;
+    let currentDate = new Date();
+    let comparisonCalendars: Array<Calendar> = (((this.planningCalendar.concat(this.callCalendar)).concat(this.selectionCalendar)).concat(this.rehearsalCalendars)).concat(this.playCalendars);
+    comparisonCalendars.map((calendar) => {
+      let startDate = new Date(new Date(calendar?.fechainicio));
+      let endDate = new Date(new Date(calendar?.fechafin));
+      if(startDate < currentDate && currentDate < endDate) {
+        noDateMatch = false;
+      }
+    });
+    let lastRehearsalCalendar: Calendar = this.rehearsalCalendars[this.rehearsalCalendars.length - 1];
+    let lastPlayCalendar: Calendar = this.playCalendars[this.playCalendars.length - 1];
+    let isAfterLastRehearsal: boolean = currentDate > new Date(lastRehearsalCalendar?.fechafin);
+    let isAfterLastPlay: boolean = currentDate > new Date(lastPlayCalendar?.fechafin);
+    return noDateMatch && isAfterLastRehearsal && isAfterLastPlay;
+  }
+
 }
