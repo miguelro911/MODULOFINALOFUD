@@ -39,7 +39,6 @@ export class PeriodoSelecComponent {
         next: (resp: any) => {
           this.periodsRetrieved = resp.data.periods;
           this.spinner = false;
-          this.utilService.showToast("Periodos consultados exitosamente");
         },
         error: (error: any) => {
           if(error.status == 404) {

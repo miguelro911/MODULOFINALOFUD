@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Student } from '../../util/interfaces/student';
 import { environment } from 'src/environment/environment';
 import { StudentRoutes } from '../../util/enums/routes/student';
 
