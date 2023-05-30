@@ -10,7 +10,7 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   getDataByEmail(email: string): Observable<any> {
-    const url = `https://api.example.com/data?email=${encodeURIComponent(email)}`;
+    const url = `http://localhost:8081/employee/login?email=${encodeURIComponent(email)}`;
     return this.http.get<any>(url);
   }
 }

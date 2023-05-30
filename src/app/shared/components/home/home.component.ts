@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LoginService } from 'src/app/modules/dashboard/services/login/login.service';
+import { EmpleadoServiceService } from 'src/app/modules/dashboard/services/employee/employee.service';
+import { UtilService } from 'src/app/modules/dashboard/services/util/util.service';
 
 
 @Component({
@@ -10,6 +11,7 @@ import { LoginService } from 'src/app/modules/dashboard/services/login/login.ser
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  spinner: boolean = false;
   email!: string 
   data!: any[];
   formRegistrarCoordinador = new FormGroup({
@@ -17,7 +19,7 @@ export class HomeComponent implements OnInit {
 
   })
 
-  constructor(private login : LoginService){
+  constructor(private login : EmpleadoServiceService, private  utilService: UtilService){
 
   }
   ngOnInit(): void {
@@ -26,9 +28,30 @@ export class HomeComponent implements OnInit {
     
   }
   LoginCoordinador(){
-    this.login.getDataByEmail(this.email)
-      .subscribe(response => {
-        this.data = response;
-      });
+    this.spinner = true;
+    let bodyRequest: object = {
+      correo: this.email,
+    };
+
+    this.login.login(bodyRequest).subscribe({
+      next: (resp : any ) =>{
+        this.data = resp;
+        this.spinner = false
+        this.utilService.showToast('Coordinador validado, Bienvenido');
+
+
+      },
+      error:(error : any)=>{
+        if(error.status == 404){
+          this.utilService.showToast(error.error.message);
+        } else{
+          this.utilService.showToast(
+            'Error consultando actividades por periodo'
+          );
+        }
+        console.error(error)
+        this.spinner = false
+      }
+    })
   }
 }
