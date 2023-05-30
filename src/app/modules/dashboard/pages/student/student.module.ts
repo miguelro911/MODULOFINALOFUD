@@ -8,6 +8,7 @@ import { AsistenciaComponent } from './components/asistencia/asistencia.componen
 import { LiquidarestudianteComponent } from './components/liquidarestudiante/liquidarestudiante.component';
 import { PeriodoSelecComponent } from './components/periodo-selec/periodo-selec.component';
 import { SelectionComponent } from './components/selection/selection.component';
+import { CoordinadorComponent } from './components/coordinador/coordinador.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { SelectionComponent } from './components/selection/selection.component';
     AsistenciaComponent,
     LiquidarestudianteComponent,
     PeriodoSelecComponent,
-    SelectionComponent
+    SelectionComponent,
+    CoordinadorComponent
   ],
   imports: [
     CommonModule,

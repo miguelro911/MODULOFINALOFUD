@@ -5,6 +5,7 @@ import { AsistenciaComponent } from './components/asistencia/asistencia.componen
 import { LiquidarestudianteComponent } from './components/liquidarestudiante/liquidarestudiante.component';
 import { HomeComponent } from 'src/app/shared/components/home/home.component';
 import { SelectionComponent } from './components/selection/selection.component';
+import { CoordinadorComponent } from './components/coordinador/coordinador.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,12 @@ const routes: Routes = [
   },
   {
     path: 'liquidarestudiante' , component:LiquidarestudianteComponent
+  },
+  {
+    path: 'crearevento' , component:CreareventoComponent
+  },
+  {
+    path: 'coordinador' , component : CoordinadorComponent
   }
 ];
 

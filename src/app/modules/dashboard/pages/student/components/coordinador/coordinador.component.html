@@ -1,0 +1,26 @@
+<form [formGroup]="formRegistrarCoordinador" (ngSubmit)="RegistrarCoordinador()" class="formulario">
+    <mat-card>
+        <mat-form-field class="field">
+            <mat-label>Nombre</mat-label>
+            <input autocomplete="off" formControlName="nombre" matInput>
+        </mat-form-field>
+
+        <mat-form-field class="field">
+            <mat-label>Apellido</mat-label>
+            <input autocomplete="off" formControlName="apellido" matInput>
+        </mat-form-field>
+
+        <mat-form-field class="field">
+            <mat-label>Cedula</mat-label>
+            <input autocomplete="off" formControlName="cedula" matInput >
+        </mat-form-field>
+        <mat-form-field class="field">
+            <mat-label>Correo</mat-label>
+            <input autocomplete="off" formControlName="correo" matInput >
+        </mat-form-field>
+    </mat-card>
+
+    <div>
+        <button type="submit" class="btn btn-primary button"> Submit</button>
+    </div>
+</form>

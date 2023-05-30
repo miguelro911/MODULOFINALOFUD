@@ -53,7 +53,7 @@ export class CalendarioComponent {
           this.utilService.showToast(error.error.message);
         } else {
           this.utilService.showToast(
-            'Error consultando actividades por periodo'
+            'Error '
           );
           console.error(error);
         }

@@ -5,8 +5,8 @@
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="student/home">Registro coordinador</a>
-      <a mat-list-item routerLink="student/login">Login coordinador</a>
+      <a mat-list-item routerLink="student/home">Login coordinador</a>
+      <a mat-list-item routerLink="student/coordinador">Registro coordinador</a>
       <a mat-list-item routerLink="student/calendario" [disabled]="!calendarRenderCondition()">Calendario</a>
       <a mat-list-item routerLink="student/seleccion" [disabled]="!selectionRenderCondition()">Selección</a>
       <a mat-list-item routerLink="student/asistencia" [disabled]="!attendanceRenderCondition()">Asistencia</a>
