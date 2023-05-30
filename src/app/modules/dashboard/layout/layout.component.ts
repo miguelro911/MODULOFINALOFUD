@@ -64,4 +64,8 @@ export class LayoutComponent {
       this.playCalendars?.length == 0) || this.planningCalendar[0]?.idestado == 'ACTIVO');
   }
 
+  selectionRenderCondition(): boolean {
+    return(this.selectionCalendar[0]?.idestado == 'INACTIVO');
+  }
+
 }
