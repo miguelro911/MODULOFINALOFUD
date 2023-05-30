@@ -30,9 +30,9 @@ export class HomeComponent implements OnInit {
   LoginCoordinador(){
     this.spinner = true;
     let bodyRequest: object = {
-      correo: this.email,
+      correo: this.email
     };
-
+    console.log(this.email)
     this.login.login(bodyRequest).subscribe({
       next: (resp : any ) =>{
         this.data = resp;
@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit {
           this.utilService.showToast(error.error.message);
         } else{
           this.utilService.showToast(
-            'Error consultando actividades por periodo'
+            'No encontrado'
           );
         }
         console.error(error)
