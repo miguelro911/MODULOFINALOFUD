@@ -9,6 +9,7 @@ import { LiquidarestudianteComponent } from './components/liquidarestudiante/liq
 import { CreareventoComponent } from './components/crearevento/crearevento.component';
 import { PeriodoSelecComponent } from './components/periodo-selec/periodo-selec.component';
 import { SelectionComponent } from './components/selection/selection.component';
+import { CoordinadorComponent } from './components/coordinador/coordinador.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { SelectionComponent } from './components/selection/selection.component';
     LiquidarestudianteComponent,
     CreareventoComponent,
     PeriodoSelecComponent,
-    SelectionComponent
+    SelectionComponent,
+    CoordinadorComponent
   ],
   imports: [
     CommonModule,

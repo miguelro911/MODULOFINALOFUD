@@ -6,6 +6,7 @@ import { LiquidarestudianteComponent } from './components/liquidarestudiante/liq
 import { CreareventoComponent } from './components/crearevento/crearevento.component';
 import { HomeComponent } from 'src/app/shared/components/home/home.component';
 import { SelectionComponent } from './components/selection/selection.component';
+import { CoordinadorComponent } from './components/coordinador/coordinador.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,9 @@ const routes: Routes = [
   },
   {
     path: 'crearevento' , component:CreareventoComponent
+  },
+  {
+    path: 'coordinador' , component : CoordinadorComponent
   }
 ];
 
