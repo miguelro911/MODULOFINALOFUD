@@ -8,10 +8,10 @@
       <a mat-list-item routerLink="modulo/login">Login coordinador</a>
       <a mat-list-item routerLink="modulo/registro">Registro coordinador</a>
       <a mat-list-item routerLink="modulo/crear-evento">Crear evento</a>
-      <a mat-list-item routerLink="modulo/calendario" *ngIf="staticLoginEmail" [disabled]="!calendarRenderCondition()">Calendario</a>
-      <a mat-list-item routerLink="modulo/seleccion" *ngIf="staticLoginEmail" [disabled]="!selectionRenderCondition()">Selección</a>
-      <a mat-list-item routerLink="modulo/asistencia" *ngIf="staticLoginEmail" [disabled]="!attendanceRenderCondition()">Asistencia</a>
-      <a mat-list-item routerLink="modulo/liquidacion" *ngIf="staticLoginEmail" [disabled]="!liquidationRenderCondition()">Liquidaciones</a>
+      <a mat-list-item [routerLink]="calendarRenderCondition()?'modulo/calendario':null" *ngIf="staticLoginEmail" [disabled]="!calendarRenderCondition()">Calendario</a>
+      <a mat-list-item [routerLink]="selectionRenderCondition()?'modulo/seleccion':null" *ngIf="staticLoginEmail" [disabled]="!selectionRenderCondition()">Selección</a>
+      <a mat-list-item [routerLink]="selectionRenderCondition()?'modulo/asistencia':null" *ngIf="staticLoginEmail" [disabled]="!attendanceRenderCondition()">Asistencia</a>
+      <a mat-list-item [routerLink]="selectionRenderCondition()?'modulo/liquidacion':null" *ngIf="staticLoginEmail" [disabled]="!liquidationRenderCondition()">Liquidaciones</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
