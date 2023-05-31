@@ -1,5 +1,5 @@
 export interface Calendar {
-  consecalendario: number,
+  consecalendario: string,
   idtipocalen: string,
   idobra: string,
   idestado: string,

@@ -18,6 +18,10 @@ export class CalendarService {
     return this.http.post(`${this.api_url}${CalendarRoutes.BASE}${CalendarRoutes.GET_ALL_BY_PERIOD}`, body);
   }
 
+  getAllTypes() {
+    return this.http.get(`${this.api_url}${CalendarRoutes.BASE}${CalendarRoutes.GET_ALL_TYPES}`);
+  }
+
   getPlanificationCalendarByPeriod(body: Object) {
     return this.http.post(`${this.api_url}${CalendarRoutes.BASE}${CalendarRoutes.GET_PLANIFICATION_CALENDAR_BY_PERIOD}`, body);
   }
