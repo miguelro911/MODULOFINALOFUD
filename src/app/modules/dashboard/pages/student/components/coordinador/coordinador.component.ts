@@ -24,7 +24,7 @@ export class CoordinadorComponent {
   icodempleado: new FormControl,
   rol: new FormControl(''),
   codunidad: new FormControl(''),
-  nombre: new FormControl(''),
+  nombre2: new FormControl(),
   apellido: new FormControl(''),
   cedula: new FormControl(''),
   celular: new FormControl(''),
@@ -38,11 +38,13 @@ export class CoordinadorComponent {
   RegistrarCoordinador(){
     this.spinner = true;
     let bodyRequest: object = {
-      nombre: this.nombre,
-      apellido: this.apellido,
-      cedula: this.cedula,
-      correo: this.correo
+      nombre: this.formRegistrarCoordinador.value.nombre2,
+      apellido: this.formRegistrarCoordinador.value.apellido,
+      cedula: this.formRegistrarCoordinador.value.cedula,
+      celular: this.formRegistrarCoordinador.value.celular,
+      correo: this.formRegistrarCoordinador.value.correo
     };
+    
 
     this.emp.register(bodyRequest).subscribe({
       next : (resp :any)=>{

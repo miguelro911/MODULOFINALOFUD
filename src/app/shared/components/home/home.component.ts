@@ -28,9 +28,10 @@ export class HomeComponent implements OnInit {
     
   }
   LoginCoordinador(){
+    
     this.spinner = true;
     let bodyRequest: object = {
-      correo: this.email
+      email: this.formRegistrarCoordinador.value.email
     };
     console.log(this.email)
     this.login.login(bodyRequest).subscribe({
