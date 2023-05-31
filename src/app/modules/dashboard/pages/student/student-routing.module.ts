@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { CalendarioComponent } from './components/calendario/calendario.component';
 import { AsistenciaComponent } from './components/asistencia/asistencia.component';
 import { LiquidarestudianteComponent } from './components/liquidarestudiante/liquidarestudiante.component';
-import { CreareventoComponent } from './components/crearevento/crearevento.component';
 import { HomeComponent } from 'src/app/shared/components/home/home.component';
 import { SelectionComponent } from './components/selection/selection.component';
 import { CoordinadorComponent } from './components/coordinador/coordinador.component';

@@ -1,8 +1,13 @@
-<div>
-    <h2>Liquidar Estudiante</h2>
+<div class="container">
+  <app-periodo-selec (event)="setPeriod($event)"></app-periodo-selec>
+  <div *ngIf="period" class="card mat-elevation-z8">
+    <app-spinner *ngIf="spinner"></app-spinner>
+    <div class="title">
+      <h2>Liquidación estudiantes</h2>
+    </div>
     <div class="buttons-container">
       <button mat-raised-button color="primary" (click)="liquidarViaticos()">Viáticos</button>
       <button mat-raised-button color="primary" (click)="liquidarElectivas()">Electivas</button>
     </div>
   </div>
-  
+</div>

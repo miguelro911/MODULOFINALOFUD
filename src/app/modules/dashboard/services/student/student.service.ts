@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Student } from '../../util/interfaces/student';
 import { environment } from 'src/environment/environment';
 import { StudentRoutes } from '../../util/enums/routes/student';
 
@@ -18,4 +17,17 @@ export class StudentService {
   getBestStudentsByInstrument(body: Object) {
     return this.http.post(`${this.api_url}${StudentRoutes.BASE}${StudentRoutes.GET_BEST_BY_INSTRUMENT}`, body);
   }
+
+  getBestStudentsByInstrumentAndSaveAttendance(body: Object) {
+    return this.http.post(`${this.api_url}${StudentRoutes.BASE}${StudentRoutes.GET_BEST_BY_INSTRUMENT_AND_SAVE_ATTENDANCE}`, body);
+  }
+
+  getViaticAttendanceHoursByPeriod(body: Object) {
+    return this.http.post(`${this.api_url}${StudentRoutes.BASE}${StudentRoutes.GET_VIATIC_ATTENDANCE_HOURS_BY_PERIOD}`, body);
+  }
+
+  getElectiveAttendanceHoursByPeriod(body: Object) {
+    return this.http.post(`${this.api_url}${StudentRoutes.BASE}${StudentRoutes.GET_ELECTIVE_ATTENDANCE_HOURS_BY_PERIOD}`, body);
+  }
+
 }

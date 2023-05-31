@@ -19,6 +19,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { FullCalendarModule } from '@fullcalendar/angular';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 const materialModule = [
   MatFormFieldModule,
@@ -38,7 +39,8 @@ const materialModule = [
   MatNativeDateModule,
   MatSlideToggleModule,
   MatSidenavModule,
-  FullCalendarModule
+  FullCalendarModule,
+  MatCheckboxModule
 ]
 
 @NgModule({

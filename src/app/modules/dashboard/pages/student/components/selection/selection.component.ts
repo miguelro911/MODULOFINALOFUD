@@ -38,7 +38,7 @@ export class SelectionComponent {
     let bodyRequest: object = {
       period: PeriodoSelecComponent.selectedPeriod,
     };
-    this.studentService.getBestStudentsByInstrument(bodyRequest).subscribe({
+    this.studentService.getBestStudentsByInstrumentAndSaveAttendance(bodyRequest).subscribe({
       next: (resp: any) => {
         this.studentsRetrieved = resp.data.bestStudentsByInstrumentProjections;
         this.spinner = false;

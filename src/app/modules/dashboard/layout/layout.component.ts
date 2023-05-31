@@ -5,6 +5,7 @@ import { map, shareReplay } from 'rxjs/operators';
 import { CalendarService } from '../services/calendar/calendar.service';
 import { UtilService } from '../services/util/util.service';
 import { Calendar } from '../util/interfaces/calendar';
+import { AsistenciaComponent } from '../pages/student/components/asistencia/asistencia.component';
 
 @Component({
   selector: 'app-layout',
@@ -66,6 +67,35 @@ export class LayoutComponent {
 
   selectionRenderCondition(): boolean {
     return(this.selectionCalendar[0]?.idestado == 'INACTIVO');
+  }
+
+  attendanceRenderCondition(): boolean {
+    let currentDate = new Date();
+    let currentActivities: Array<Calendar> = this.rehearsalCalendars.filter((calendar) => {
+      let startDate = new Date(new Date(calendar.fechainicio));
+      let endDate = new Date(new Date(calendar.fechafin));
+      return (startDate <= currentDate && currentDate <= endDate);
+    });
+    AsistenciaComponent.attendanceCalendar = currentActivities[0];
+    return currentActivities.length != 0;
+  }
+
+  liquidationRenderCondition(): boolean {
+    let noDateMatch = true;
+    let currentDate = new Date();
+    let comparisonCalendars: Array<Calendar> = (((this.planningCalendar.concat(this.callCalendar)).concat(this.selectionCalendar)).concat(this.rehearsalCalendars)).concat(this.playCalendars);
+    comparisonCalendars.map((calendar) => {
+      let startDate = new Date(new Date(calendar?.fechainicio));
+      let endDate = new Date(new Date(calendar?.fechafin));
+      if(startDate < currentDate && currentDate < endDate) {
+        noDateMatch = false;
+      }
+    });
+    let lastRehearsalCalendar: Calendar = this.rehearsalCalendars[this.rehearsalCalendars.length - 1];
+    let lastPlayCalendar: Calendar = this.playCalendars[this.playCalendars.length - 1];
+    let isAfterLastRehearsal: boolean = currentDate > new Date(lastRehearsalCalendar?.fechafin);
+    let isAfterLastPlay: boolean = currentDate > new Date(lastPlayCalendar?.fechafin);
+    return noDateMatch && isAfterLastRehearsal && isAfterLastPlay;
   }
 
 }

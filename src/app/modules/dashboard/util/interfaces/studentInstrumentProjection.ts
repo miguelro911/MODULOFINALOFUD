@@ -4,5 +4,6 @@ export interface StudentInstrumentProjection {
   codigo: string,
   facultad: string,
   proyecto: string,
-  instrumento: string
+  instrumento: string,
+  asistencia: boolean
 }
