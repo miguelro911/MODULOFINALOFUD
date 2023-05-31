@@ -5,10 +5,10 @@ import { jsPDF } from "jspdf";
 
 @Component({
   selector: 'app-liquidarestudiante',
-  templateUrl: './liquidarestudiante.component.html',
-  styleUrls: ['./liquidarestudiante.component.scss'],
+  templateUrl: './liquidacion.component.html',
+  styleUrls: ['./liquidacion.component.scss'],
 })
-export class LiquidarestudianteComponent {
+export class LiquidacionComponent {
   constructor(
     private studentService: StudentService,
     private utilService: UtilService

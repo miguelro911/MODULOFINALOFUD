@@ -5,12 +5,13 @@
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="student/home">Login coordinador</a>
-      <a mat-list-item routerLink="student/coordinador">Registro coordinador</a>
-      <a mat-list-item routerLink="student/calendario" [disabled]="!calendarRenderCondition()">Calendario</a>
-      <a mat-list-item routerLink="student/seleccion" [disabled]="!selectionRenderCondition()">Selección</a>
-      <a mat-list-item routerLink="student/asistencia" [disabled]="!attendanceRenderCondition()">Asistencia</a>
-      <a mat-list-item routerLink="student/liquidarestudiante" [disabled]="!liquidationRenderCondition()">Liquidación estudiantes</a>
+      <a mat-list-item routerLink="modulo/login">Login coordinador</a>
+      <a mat-list-item routerLink="modulo/registro">Registro coordinador</a>
+      <a mat-list-item routerLink="modulo/crear-evento">Crear evento</a>
+      <a mat-list-item routerLink="modulo/calendario" *ngIf="staticLoginEmail" [disabled]="!calendarRenderCondition()">Calendario</a>
+      <a mat-list-item routerLink="modulo/seleccion" *ngIf="staticLoginEmail" [disabled]="!selectionRenderCondition()">Selección</a>
+      <a mat-list-item routerLink="student/asistencia" *ngIf="staticLoginEmail" [disabled]="!attendanceRenderCondition()">Asistencia</a>
+      <a mat-list-item routerLink="modulo/liquidacion" *ngIf="staticLoginEmail" [disabled]="!liquidationRenderCondition()">Liquidaciones</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

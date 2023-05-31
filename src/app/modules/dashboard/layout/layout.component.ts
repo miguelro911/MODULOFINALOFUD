@@ -20,6 +20,16 @@ export class LayoutComponent {
       shareReplay()
     );
 
+  public static loginEmail: string = '';
+
+  get staticLoginEmail() {
+    return LayoutComponent.loginEmail;
+  }
+
+  set staticLoginEmail(email: string) {
+    LayoutComponent.loginEmail = email;
+  }
+
   planningCalendar: Array<Calendar> = [];
   callCalendar: Array<Calendar> = [];
   selectionCalendar: Array<Calendar> = [];

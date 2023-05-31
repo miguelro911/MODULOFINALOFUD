@@ -30,10 +30,6 @@ export class AsistenciaComponent {
     return AsistenciaComponent.attendanceCalendar;
   }
 
-  set staticAttendanceCalendar(calendar: Calendar) {
-    AsistenciaComponent.attendanceCalendar = calendar;
-  }
-
   toggleAttendance(checked: boolean, index: number) {
     this.studentsRetrieved[index].asistencia = checked;
   }
