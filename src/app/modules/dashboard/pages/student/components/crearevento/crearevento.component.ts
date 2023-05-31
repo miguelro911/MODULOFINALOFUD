@@ -16,15 +16,17 @@ export class CreareventoComponent {
     private calendarService: CalendarService,
     private theaterPlayService: TheaterPlayService,
     public utilService: UtilService
-  ) {
-    
-  }
+  ) {}
+
+  spinner: boolean = false;
 
   theaterPlays: TheaterPlay[] = [];
   calendarTypes: CalendarType[] = [];
 
   selectedCalendar: string = '';
   selectedTheaterPlay: string = '';
+  startDate: string = '';
+  endDate: string = '';
 
   getRequiredData(period: number) {
     let bodyRequest: object = {
@@ -35,7 +37,6 @@ export class CreareventoComponent {
         this.calendarTypes = resp.data.types;
         this.theaterPlayService.getAllByPeriod(bodyRequest).subscribe({
           next: (resp: any) => {
-            console.log(resp);
             this.theaterPlays = [resp.data.theaterPlayEntity];
           },
           error: (error: any) => {
@@ -51,8 +52,49 @@ export class CreareventoComponent {
     });
   }
 
-  createEvent() {}
+  createEvent() {
+    let bodyRequest: object = {
+      idtipocalen: this.selectedCalendar,
+      idobra: this.selectedTheaterPlay,
+      fechainicio: this.startDate,
+      fechafin: this.endDate,
+    };
+    this.calendarService.createCalendar(bodyRequest).subscribe({
+      next: (resp: any) => {
+        console.log(resp);
+        this.setUntouchedFields();
+        this.utilService.showToast('Calendario creado exitosamente');
+      },
+      error: (error: any) => {
+        console.error(error);
+        this.setUntouchedFields();
+        this.utilService.showToast('Error creando calendario');
+      },
+    });
+  }
+
+  setUntouchedFields(): void {
+    this.selectedCalendar = '';
+    this.selectedTheaterPlay = '';
+    this.startDate = '';
+    this.endDate = '';
+    this.formControl_calendarType.markAsUntouched();
+    this.formControl_theaterPlay.markAsUntouched();
+    this.formControl_startDate.markAsUntouched();
+    this.formControl_finishDate.markAsUntouched();
+  }
+
+  areValidFields(): boolean {
+    return (
+      this.formControl_calendarType.errors == null &&
+      this.formControl_theaterPlay.errors == null &&
+      this.formControl_startDate.errors == null &&
+      this.formControl_finishDate.errors == null
+    );
+  }
 
   formControl_calendarType = new FormControl('', [Validators.required]);
   formControl_theaterPlay = new FormControl('', [Validators.required]);
+  formControl_startDate = new FormControl('', [Validators.required]);
+  formControl_finishDate = new FormControl('', [Validators.required]);
 }

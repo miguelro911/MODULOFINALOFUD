@@ -30,4 +30,8 @@ export class CalendarService {
     return this.http.post(`${this.api_url}${CalendarRoutes.BASE}${CalendarRoutes.FINISH_PLANIFICATION_CALENDAR}`, body);
   }
 
+  createCalendar(body: Object) {
+    return this.http.post(`${this.api_url}${CalendarRoutes.BASE}${CalendarRoutes.CREATE_CALENDAR}`, body);
+  }
+
 }

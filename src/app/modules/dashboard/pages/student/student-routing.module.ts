@@ -31,7 +31,7 @@ const routes: Routes = [
     path: 'asistencia', component: AsistenciaComponent
   },
   {
-    path: 'liquidarestudiante' , component: LiquidacionComponent
+    path: 'liquidacion' , component: LiquidacionComponent
   }
 ];
 

@@ -1,6 +1,7 @@
 <div class="container">
   <app-periodo-selec (event)="getRequiredData($event)"></app-periodo-selec>
-  <mat-card>
+  <mat-card *ngIf="theaterPlays.length != 0 && calendarTypes.length != 0">
+    <app-spinner *ngIf="spinner"></app-spinner>
     <mat-card-header>
       <mat-card-title>
         Creación de evento
@@ -23,10 +24,24 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill" style="margin-bottom: 1rem;">
+        <mat-label>Fecha de inicio</mat-label>
+        <input matInput [(ngModel)]="startDate" [formControl]="formControl_startDate" (click)="picker_1.open()" [matDatepicker]="picker_1">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker_1"></mat-datepicker-toggle>
+        <mat-datepicker #picker_1></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill" style="margin-bottom: 1rem;">
+        <mat-label>Fecha de finalización</mat-label>
+        <input matInput [(ngModel)]="endDate" [formControl]="formControl_finishDate" (click)="picker_2.open()" [matDatepicker]="picker_2">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker_2"></mat-datepicker-toggle>
+        <mat-datepicker #picker_2></mat-datepicker>
+      </mat-form-field>
     </mat-card-content>
     <mat-card-actions align="end">
       <div>
-        <button class="btn btn-primary button" (onclick)="createEvent"> Submit</button>
+        <button class="btn btn-primary button" [disabled]="spinner || !areValidFields()" (click)="createEvent()">Crear evento</button>
       </div>
     </mat-card-actions>
   </mat-card>
